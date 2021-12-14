@@ -1,14 +1,16 @@
 # quantum_computing
 <p align="center">
-    <img src="https://itsupportla.com/files/2021/09/quantum.jpg" width="750" height="400">
+    <img src="https://itsupportla.com/files/2021/09/quantum.jpg" width="500" height="250">
+    <br>
+    <img src="https://img.shields.io/github/workflow/status/slowy07/quantum_computing/build/main?logo=github&style=for-the-badge">
 </p>
 
+this repo contains everything i learn about quantum computing and algorithm on quantum computing
 
-![build](https://img.shields.io/github/workflow/status/slowy07/quantum_computing/build/main?logo=github&style=for-the-badge)
-![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)
+## what is aquantum computing
 
+quantum computing is an area of study focused on the development of computer based technologies centered around the principles of [quantum theory](documentation/quantum.md). quantum computing uses a combination of bits to perform specific computational taks. all at much higher efficiency than their classical counterparts. development of quantum computers mark a leap forward in computing capability, with massive performance gains for specifig use cases. for example quantum computing excels at like simulations.
 
-quantum computing example
 
 ## working with quantum
 to code any quantum circuit, step
