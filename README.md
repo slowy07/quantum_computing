@@ -1,4 +1,13 @@
 # quantum_computing
+<p align="center">
+    <img src="https://itsupportla.com/files/2021/09/quantum.jpg" width="750" height="400">
+</p>
+
+
+![build](https://img.shields.io/github/workflow/status/slowy07/quantum_computing/build/main?logo=github&style=for-the-badge)
+![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)
+
+
 quantum computing example
 
 ## working with quantum
