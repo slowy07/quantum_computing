@@ -7,16 +7,15 @@
 import qiskit as q
 
 
-def half_adder(bit0: int, bit1: int) -> q.result.count.Counts:
+def half_adder(bit0: int, bit1: int) -> q.result.counts.Counts:
     """
     >>> half_adder(0, 0)
     {'00': 1000}
     """
-    # user Aer's qasm_simulator
+    # Use Aer's qasm_simulator
     simulator = q.Aer.get_backend("qasm_simulator")
 
     qc_ha = q.QuantumCircuit(4, 2)
-
     # encode inputs in qubits 0 and 1
     if bit0 == 1:
         qc_ha.x(0)
@@ -28,7 +27,7 @@ def half_adder(bit0: int, bit1: int) -> q.result.count.Counts:
     qc_ha.cx(0, 2)
     qc_ha.cx(1, 2)
 
-    # user ccx / toffoli gate to write AND of the inputs on qubit3
+    # use ccx / toffoli gate to write AND of the inputs on qubit3
     qc_ha.ccx(0, 1, 3)
     qc_ha.barrier()
 
@@ -36,10 +35,10 @@ def half_adder(bit0: int, bit1: int) -> q.result.count.Counts:
     qc_ha.measure(2, 0)  # extract XOR value
     qc_ha.measure(3, 1)  # extract AND value
 
-    # execute the circuit on the qasm simulator
+    # Execute the circuit on the qasm simulator
     job = q.execute(qc_ha, simulator, shots=1000)
 
-    # return the histogram data of the result of the exeperiment.
+    # Return the histogram data of the results of the experiment.
     return job.result().get_counts(qc_ha)
 
 
