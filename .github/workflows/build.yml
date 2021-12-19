@@ -19,6 +19,6 @@ jobs:
           python -m pip install --upgrade pip setuptools six wheel
           python -m pip install mypy pytest -r requirements.txt
       - run: mypy --ignore-missing-imports --install-types --non-interactive .
-      - name: run testing
-        run: pytest . --doctest-modules
+      - name: run testing problem test
+        run: pytest deutsch_algorithm/deutsch.py --doctest-modules
         
