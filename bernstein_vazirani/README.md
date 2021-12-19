@@ -49,4 +49,15 @@ in particular, when start with a quantum register |00...0 > and apply n handmard
 
 in this case, the phase term (-1)^a-x disappears, since a = 0, and this (-1)^a-x - 1.
 
+the classical oracle f, returns 1 for any input x such that s. x mod 2 = 1, and returns 0 otherwise. if we use the same phase kickback trick from deutsch-jozsa algorithm and act on a qubit in the state | - >, we get the following transformation:
+
+![formula3](flow/formula3.png)
+
+the algorithm to reveal the hidden bit string follows naturally by querying the quantum oracle Fs, with the quantum superposition obtained from the handmard transformation of |00...0 > namely:
+
+![formula4](flow/formula4.png)
+
+because the inverse ot the __n__ handmard gates is again the __n__ handmard gates, we can obtain __a__ by
+
+![formula5](flow/formula5.png)
 
