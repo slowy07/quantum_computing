@@ -50,7 +50,7 @@ for i in range(n):
 
 # measurement
 for i in range(n):
-    bv_circuit.measurement(i, i)
+    bv_circuit.measure(i, i)
 
 bv_circuit.draw()
 
