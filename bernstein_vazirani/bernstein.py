@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from qiskit import IBMQ, Aer
-from qiskit.providers.imbq import least_busy
+from qiskit.providers.ibmq import least_busy
 from qiskit import (
     QuantumCircuit,
     ClassicalRegister,
