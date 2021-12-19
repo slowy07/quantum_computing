@@ -39,3 +39,14 @@ using a quantum computer, we can solve this problem with 100% confidence after o
 
 ![imagebv1](flow/bv1.png)
 
+to explain the algorithm, let's look more closely at what happerns when we apply a H-gate to each qubit. if e have an n-qibot state, |a>, and apply the H-gates, we will see the transformation
+
+![formula1](flow/formula1.png)
+
+in particular, when start with a quantum register |00...0 > and apply n handmard gates, we have the familiar quantum superposition
+
+![formula2](flow/formula2.png)
+
+in this case, the phase term (-1)^a-x disappears, since a = 0, and this (-1)^a-x - 1.
+
+
