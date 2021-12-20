@@ -14,10 +14,12 @@ quantum computing is an area of study focused on the development of computer bas
 *More information*:
 - [what is quantum ?](documentation/quantum.md)
 - [atom of computation](documentation/atom_of_computation.md)
+- [representing qubit states](documentation/qubit_states.md)
 
 
 *Perequisites*:
 - [basic python](documentation/python_jupyter.md)
+
 
 
 ## working with quantum
