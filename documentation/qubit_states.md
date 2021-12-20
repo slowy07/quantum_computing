@@ -10,7 +10,7 @@ In quantum computers, our basic variable is the qubit: a quantum variant of the 
 
 In quantum physics we use statevectors to describe the state of our system. Say we wanted to describe the position of a car along a track, this is a classical system so we could use a number x
 
-![car_track](documentation/car_track.jpg)
+![car_track](image/car_track_1.jpg)
 
 ```
 x = 4
@@ -18,9 +18,9 @@ x = 4
 
 Alternatively, we could instead use a collection of numbers in a vector called a statevector. Each element in the statevector contains the probability of finding the car in a certain place:
 
-![car_track2](documentation/car_track2.jpg)
+![car_track2](image/car_track_2.jpg)
 
-![probability](documentation/probability1.png)
+![probability](image/probability1.png)
 
 This isn’t limited to position, we could also keep a statevector of all the possible speeds the car could have, and all the possible colours the car could be. With classical systems (like the car example above), this is a silly thing to do as it requires keeping huge vectors when we only really need one number. But as we will see in this chapter, statevectors happen to be a very good way of keeping track of quantum systems, including quantum computers.
 
