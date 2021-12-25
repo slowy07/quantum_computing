@@ -26,7 +26,7 @@ bv_circuit = QuantumCircuit(n + 1, n)
 bv_circuit.h(n)
 bv_circuit.z(n)
 
-# apply handmard gates before querying the oracle
+# apply hadamard gates before querying the oracle
 for i in range(n):
     bv_circuit.h(i)
 
@@ -44,7 +44,7 @@ for q in range(n):
 # apply barrier
 bv_circuit.barrier()
 
-# apply handmard gates after query before oracle
+# apply hadamard gates after query before oracle
 for i in range(n):
     bv_circuit.h(i)
 

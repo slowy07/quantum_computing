@@ -58,7 +58,7 @@ gates:
 
 - ``QuantumCircuit.h(0)``
     
-    A handmard gate (h) on qubit 0, which puts it into a superposition state
+    A hadamard gate (h) on qubit 0, which puts it into a superposition state
 
 - ``QuantumCircuit.cx(0, 1)``
 

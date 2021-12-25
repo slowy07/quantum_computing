@@ -32,9 +32,9 @@ where each query reveals a different bit of __s__, for example, with x = 1000...
 using a quantum computer, we can solve this problem with 100% confidence after only one call the function F(x). the quantum bernstein-vazirani algorithm to fund the hidden bit string is very simple:
 
 1. initalize the inputs qubits to the |0>n state, and output qubit to | - >
-2. apply handmard gates to the input register
+2. apply hadamard gates to the input register
 3. query the oracle
-4. apply handmard gates to the input register
+4. apply hadamard gates to the input register
 5. measure
 
 ![imagebv1](flow/bv1.png)
@@ -43,7 +43,7 @@ to explain the algorithm, let's look more closely at what happerns when we apply
 
 ![formula1](flow/formula1.png)
 
-in particular, when start with a quantum register |00...0 > and apply n handmard gates, we have the familiar quantum superposition
+in particular, when start with a quantum register |00...0 > and apply n hadamard gates, we have the familiar quantum superposition
 
 ![formula2](flow/formula2.png)
 
@@ -53,11 +53,11 @@ the classical oracle f, returns 1 for any input x such that s. x mod 2 = 1, and 
 
 ![formula3](flow/formula3.png)
 
-the algorithm to reveal the hidden bit string follows naturally by querying the quantum oracle Fs, with the quantum superposition obtained from the handmard transformation of |00...0 > namely:
+the algorithm to reveal the hidden bit string follows naturally by querying the quantum oracle Fs, with the quantum superposition obtained from the hadamard transformation of |00...0 > namely:
 
 ![formula4](flow/formula4.png)
 
-because the inverse ot the __n__ handmard gates is again the __n__ handmard gates, we can obtain __a__ by
+because the inverse ot the __n__ hadamard gates is again the __n__ hadamard gates, we can obtain __a__ by
 
 ![formula5](flow/formula5.png)
 
