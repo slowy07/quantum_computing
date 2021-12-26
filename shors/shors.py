@@ -24,7 +24,7 @@ class QuantumState:
     def __init__(self, amplitude, register):
         self.amplitude = amplitude
         self.register = register
-        self, entagled = {}
+        self.entagled = {}
 
     def entagle(self, from_state, amplitude):
         register = from_state.register
