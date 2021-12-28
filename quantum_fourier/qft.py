@@ -1,10 +1,9 @@
 import numpy as np
 from numpy import pi
-
-from qiskit import QuantumCircuit, transpile, assemble, Aer, IBMQ
+from qiskit import IBMQ, Aer, QuantumCircuit, assemble, transpile
 from qiskit.providers.imbq import least_busy
 from qiskit.tools.monitor import job_monitor
-from qiskit.visualization import plot_histogram, plot_bloch_multivector
+from qiskit.visualization import plot_bloch_multivector, plot_histogram
 from qiskit_textbook.widgets import scalable_circuit
 
 qc = QuantumCircuit(3)

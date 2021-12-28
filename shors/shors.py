@@ -1,6 +1,6 @@
+import argparse
 import math
 import random
-import argparse
 
 
 def print_none(a):

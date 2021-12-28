@@ -1,16 +1,16 @@
 # initialization
 import matplotlib.pyplot as plt
 import numpy as np
-
-from qiskit import IBMQ, Aer
-from qiskit.providers.ibmq import least_busy
 from qiskit import (
-    QuantumCircuit,
+    IBMQ,
+    Aer,
     ClassicalRegister,
+    QuantumCircuit,
     QuantumRegister,
-    transpile,
     assemble,
+    transpile,
 )
+from qiskit.providers.ibmq import least_busy
 
 # import basic plot tool
 from qiskit.visualization import plot_histogram
