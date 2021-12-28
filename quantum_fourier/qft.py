@@ -61,7 +61,7 @@ statevector = sim.run(qc_init).result().get_statevector()
 plot_bloch_multivector(statevector)
 
 qft(qc, 3)
-qct.draw()
+qc.draw()
 
 qc.save_statevector()
 statevector = sim.run(qc).result().get_statevector()
@@ -102,7 +102,7 @@ IBMQ.load_account()
 provider = IBMQ.get_provider(hub="ibm-q")
 backend = least_busy(
     provider.backends(
-        filters=lambda x: x.configuration().n_qubits >= nqubits
+        filters=lambda x: x.configuration().n_qubits >= n_qubit
         and not x.configuration().simulator
         and x.status().operational == True
     )
