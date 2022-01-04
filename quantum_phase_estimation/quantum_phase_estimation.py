@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 
-from qiskit import IMBQ, Aer, transpile, assembl
+from qiskit import IMBQ, Aer, transpile, assemble
 from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
 
 from qiskit.visualization import plot_histogram
@@ -52,7 +52,7 @@ answer = results.get_counts()
 plot_histogram(answer)
 
 # create and set up circuit
-qpe = QuantumCircuit(4, 3)
+qpe2 = QuantumCircuit(4, 3)
 for qubit in tange(3):
     qpe2.h(qubit)
 
