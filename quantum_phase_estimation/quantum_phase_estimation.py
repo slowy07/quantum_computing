@@ -118,7 +118,7 @@ qobj = assemble(t_qpe3, shots =shots)
 results = aer_sim.run(qobj).result()
 answer = results.get_counts()
 
-plot_histogrm(answer)
+plot_histogram(answer)
 
 qpe.draw()
 
