@@ -32,6 +32,7 @@ def qft_dagger(qc, n):
             qc.cp(-math.pi / float(2 ** (j - m)), m, j)
         qc.h(j)
 
+
 # well then measure the counting register
 qpe.barrier()
 # apply inverse QFT
@@ -42,10 +43,10 @@ for n in range(3):
     qpe.measure(n, n)
 qpe.draw()
 
-aer_sim = Aer.get_backend('aer_simulator')
+aer_sim = Aer.get_backend("aer_simulator")
 shots = 2048
 t_qpe = transpile(qpe, aer_sim)
-qobj = assemble(t_qpe,shots = shots)
+qobj = assemble(t_qpe, shots=shots)
 results = aer_sim.run(qobj).results()
 answer = results.get_counts()
 
@@ -53,11 +54,11 @@ plot_histogram(answer)
 
 # create and set up circuit
 qpe2 = QuantumCircuit(4, 3)
-for qubit in tange(3):
+for qubit in range(3):
     qpe2.h(qubit)
 
 # prepre our eigenstate |psi>
-angle = 2 * mth.pi / 3
+angle = 2 * math.pi / 3
 repetitions = 1
 for counting_qubit in range(3):
     for i in range(repetitions):
@@ -73,10 +74,10 @@ for n in range(3):
 qpe2.draw()
 
 # let's see the result
-aer_sim = Aer.get_backend('aer_simulator')
+aer_sim = Aer.get_backend("aer_simulator")
 shots = 4096
 t_qpe2 = transpile(qpe2, aer_sim)
-qobj = assemble(t_qpe2, shots = shots)
+qobj = assemble(t_qpe2, shots=shots)
 results = aer_sim.run(qobj).result()
 answer = results.get_counts()
 
@@ -111,14 +112,13 @@ for n in range(5):
 qpe3.draw()
 
 # let's see the result
-aer_sim = Aer.get_backend('aer_simulator')
+aer_sim = Aer.get_backend("aer_simulator")
 shots = 4096
 t_qpe3 = transpile(qpe3, aer_sim)
-qobj = assemble(t_qpe3, shots =shots)
+qobj = assemble(t_qpe3, shots=shots)
 results = aer_sim.run(qobj).result()
 answer = results.get_counts()
 
 plot_histogram(answer)
 
 qpe.draw()
-
