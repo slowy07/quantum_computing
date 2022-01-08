@@ -160,12 +160,14 @@ if __name__ == "__main__":
 
     print("training data points :{}".format(len(train_label)))
     print("testing data label: {}".format(len(test_label)))
+    model = KNeighborsClassifer(n_neighbors = k, algorithm = "brute")
+    model.fit(train_data, train_label)
 
     # evaluating the model and upate the accuracies list
     kpredict = model.predict(test_data)
     score = accuracy_score(test_label, kpredict, normalize=True)
 
-    class_bit = 11
+    class_bit = 1
     pattern_np = np.concatenate(
         (train_data, train_label.reshape(train_label.size, 1)), axis=1
     )
@@ -174,8 +176,8 @@ if __name__ == "__main__":
     QKNN_object = QKNN(
         pattern_np,
         n=pattern_np.shape[1] - class_bit,
-        m=pattern - np.shape[0],
-        class_bit=class_bit,
+        m=pattern_np - np.shape[0],
+        classic_bit= class_bit,
         k_neighbours=k,
         threshold=t,
         shots=1024,
