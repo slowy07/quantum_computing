@@ -160,7 +160,7 @@ if __name__ == "__main__":
 
     print("training data points :{}".format(len(train_label)))
     print("testing data label: {}".format(len(test_label)))
-    model = KNeighborsClassifer(n_neighbors = k, algorithm = "brute")
+    model = KNeighborsClassifer(n_neighbors=k, algorithm="brute")
     model.fit(train_data, train_label)
 
     # evaluating the model and upate the accuracies list
@@ -177,7 +177,7 @@ if __name__ == "__main__":
         pattern_np,
         n=pattern_np.shape[1] - class_bit,
         m=pattern_np - np.shape[0],
-        classic_bit= class_bit,
+        classic_bit=class_bit,
         k_neighbours=k,
         threshold=t,
         shots=1024,
