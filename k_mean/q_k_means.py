@@ -19,7 +19,7 @@ def get_theta(d):
     return theta
 
 
-def get_distance(x, y):
+def get_Distance(x, y):
     theta_1 = get_theta(x)
     theta_2 = get_theta(y)
 
@@ -83,9 +83,8 @@ def plot_centroids(centers):
 def initialize_centers(points, k):
     return points[np.random.randint(points.shape[0], size=k), :]
 
-
 def get_distance(p1, p2):
-    return np.sqrt(np.sum((p1 - p2) * (p1 - p2)))
+    return np.sqrt(np.sum(p1 - p2) * (p1 - p2))
 
 
 def find_nearest_neighbour(points, centroids):
@@ -97,7 +96,7 @@ def find_nearest_neighbour(points, centroids):
         min_dis = 1000
         ind = 0
         for j in range(k):
-            temp_dis = get_distance(points[i, :], centroids[j, :])
+            temp_dis = get_Distance(points[i, :], centroids[j, :])
 
             if temp_dis < min_dis:
                 min_dis = temp_dis
