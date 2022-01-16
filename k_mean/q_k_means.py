@@ -80,7 +80,7 @@ def plot_centroids(centers):
     plt.show()
 
 
-def initialize_center(points, k):
+def initialize_centers(points, k):
     return points[np.random.randint(points.shape[0], size=k), :]
 
 
