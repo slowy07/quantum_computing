@@ -69,7 +69,7 @@ gates:
     
 - ``QuantumCircuit.measure([0, 1], [0, 1])``
     
-    The first argument indexes the qubits; the second argument indexes the classical bits, then the n qubit's measueremtn result ill be stroed in the n classical bit.
+    The first argument indexes the qubits; the second argument indexes the classical bits, then the n qubit's measuerement result ill be stroed in the n classical bit.
 
 ```python
 circuit.h(0)
