@@ -83,6 +83,7 @@ def plot_centroids(centers):
 def initialize_centers(points, k):
     return points[np.random.randint(points.shape[0], size=k), :]
 
+
 def get_distance(p1, p2):
     return np.sqrt(np.sum(p1 - p2) * (p1 - p2))
 
