@@ -17,7 +17,7 @@ fitness = np.empty([pop_size])
 probability = np.empty([pop0size])
 qpv = np.empty([pop_size, genome_length, top_bottom])
 nqpv = np.empty([pop_size, genome_length, top_bottom])
-chromosome = np.empty([pop_size, genome_length], dtype = np.int)
+chromosome = np.empty([pop_size, genome_length], dtype=np.int)
 child1 = np.empty([pop_size, genome_length, top_bottom])
 child2 = np.empty([pop_size, genome_length, top_bottom])
 best_chrom = np.empty([generation_max])
@@ -30,6 +30,7 @@ the_best_chrom = 0
 generation = 0
 
 # quantum population init
+
 
 def Init_population():
     # hadamard gate
@@ -51,12 +52,16 @@ def Init_population():
             rot[1, 0] = math.sin(theta)
             rot[1, 1] = math.cos(theta)
 
-            AlphaBeta[0] = rot[0, 0] * (h[0][0] * QubitZero[0]) + rot[0, 1] * (h[0][1]* QubitZero[1])
-            AlphaBeta[1] = rot[1, 0] * (h[1][0] * QubitZero[0]) + rot[1, 1] * (h[1][1] * QubitZero[1])
+            AlphaBeta[0] = rot[0, 0] * (h[0][0] * QubitZero[0]) + rot[0, 1] * (
+                h[0][1] * QubitZero[1]
+            )
+            AlphaBeta[1] = rot[1, 0] * (h[1][0] * QubitZero[0]) + rot[1, 1] * (
+                h[1][1] * QubitZero[1]
+            )
 
             # alpha square
             qpv[i, j, 0] = np.around(2 * pow(AlphaBeta[0], 2), 2)
-            
+
             # beta square
             qpvp[i, j, 1] = np.around(2 * pow(AlphaBeta[1], 2), 2)
 
@@ -69,13 +74,13 @@ def Show_population():
         print()
         print("qpv = ", i, ": ")
         for j in range(1, genome_length):
-            print(qpv[i, j, 0], end = "")
-            print(" ", end = "")
+            print(qpv[i, j, 0])
+            print(" ")
         print()
 
         for j in range(1, genome_length):
-            print(qpv[i, j, 1], end="")
-            print(" ", end="")
+            print(qpv[i, j, 1])
+            print(" ")
     print()
 
 
@@ -89,7 +94,7 @@ def Measure(p_alpha):
                 chromosome[i, j] = 0
             else:
                 chromosome[i, j] = 1
-            print(chromosome[i, j], " ", end="")
+            print(chromosome[i, j], " ")
 
         print()
     print()
@@ -105,11 +110,11 @@ def Fitness_evaluation(generation):
         fitness[i] = 0
 
     # let f(x) = abs(x - 5 / 2 + xin(x))
-    for i in range(1m pop_size):
+    for i in range(pop_size):
         x = 0
         for j in range(1, genome_length):
             x = x + chromosome[i, j] * pow(2, genome_length - j - 1)
-            
+
             # replace the value of x in the function f(x)
             y = np.fabs((x - 5) / (2 + np.sin(x)))
 
@@ -137,7 +142,7 @@ def Fitness_evaluation(generation):
     best_chrom[generation] = the_best_chrom
 
     # statical output
-    f = open('output.dat', 'a')
+    f = open("output.dat", "a")
     f.write(str(generation) + " " + str(fitness_averange) + "\n")
     f.write(" \n")
     f.close()
@@ -160,8 +165,12 @@ def rotation():
                     rot[1, 0] = math.sin(delta_theta)
                     rot[1, 1] = math.cos(delta_theta)
 
-                    nqpv[i, j, 0] = (rot[0, 0] * qpv[i, j, 0]) + (rot[0, 1] * qpv[i, j, 1])
-                    nqpv[i, j, 1] = (rot[1, 0] * qpv[i, j, 0]) + (rot[1, 1] * qpv[i, j, 1])
+                    nqpv[i, j, 0] = (rot[0, 0] * qpv[i, j, 0]) + (
+                        rot[0, 1] * qpv[i, j, 1]
+                    )
+                    nqpv[i, j, 1] = (rot[1, 0] * qpv[i, j, 0]) + (
+                        rot[1, 1] * qpv[i, j, 1]
+                    )
 
                     qpv[i, j, 0] = round(nqpv[i, j, 0], 2)
                     qpv[i, j, 1] = round(1 - nqpv[i, j, 0], 2)
@@ -172,10 +181,14 @@ def rotation():
                     rot[0, 1] = -math.sin(delta_theta)
                     rot[1, 0] = math.sin(delta_theta)
                     rot[1, 1] = math.cos(delta_theta)
-                    
-                    nqpv[i, j, 0] = (rot[0, 0] * qpv[i, j, 0]) + (rot[0, 1] * qpv[i, j, 1])
-                    nqpv[i, j, 1] = (rot[1, 0] * qpv[i, j, 0]) + (rot[0, 1] * qpv[i, j, 1])
-                    
+
+                    nqpv[i, j, 0] = (rot[0, 0] * qpv[i, j, 0]) + (
+                        rot[0, 1] * qpv[i, j, 1]
+                    )
+                    nqpv[i, j, 1] = (rot[1, 0] * qpv[i, j, 0]) + (
+                        rot[0, 1] * qpv[i, j, 1]
+                    )
+
                     qpv[i, j, 0] = round(nqpv[i, j, 0], 2)
                     qpv[i, j, 1] = round(1 - nqpv[i, j, 0], 2)
 
@@ -201,7 +214,7 @@ def mutation(pop_mutation_rate, mutation_rate):
             for j in range(1, genome_length):
                 npqv[i, j, 0] = qpv[i, j, 0]
                 nqpv[i, j, 1] = qpv[i, j, 1]
-    
+
     for i in range(1, pop_size):
         for j in range(1, genome_length):
             qpv[i, j, 0] = nqpv[i, j, 0]
@@ -210,15 +223,16 @@ def mutation(pop_mutation_rate, mutation_rate):
 
 # performance graph
 def plot_Output():
-    data = np.loadtxt('output.dat')
+    data = np.loadtxt("output.dat")
 
     x = data[:, 0]
     y = data[:, 1]
     plt.plot(x, y)
-    plt.xlabel('generation')
-    plt.ylabel('Fitness averange')
+    plt.xlabel("generation")
+    plt.ylabel("Fitness averange")
     plt.xlim(0.0, 550.0)
     plt.show()
+
 
 # main program
 def Q_GA():
@@ -230,7 +244,7 @@ def Q_GA():
     Measure(0.5)
     Fitness_evaluation(generation)
 
-    while (generaation < generation_max - 1):
+    while generaation < generation_max - 1:
         print(f"the best generation {generation}, {best_chrom[generation]}")
         print()
         print("generation ", generation)
@@ -245,4 +259,3 @@ def Q_GA():
 print("quantum genetic algorithm")
 Q_GA()
 plot_output()
-
