@@ -1,4 +1,4 @@
-# quantum_computing
+# quantum computing
 
 this repo contains everything i learn about quantum computing and algorithm on quantum computing
 
