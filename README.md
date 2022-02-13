@@ -1,9 +1,4 @@
 # quantum_computing
-<p align="center">
-    <img src="https://itsupportla.com/files/2021/09/quantum.jpg" width="500" height="250">
-    <br>
-    <img src="https://img.shields.io/github/workflow/status/slowy07/quantum_computing/build/main?logo=github&style=for-the-badge">
-</p>
 
 this repo contains everything i learn about quantum computing and algorithm on quantum computing
 
