@@ -5,26 +5,26 @@ import sys
 import getopt
 from six.moves import range
 
-def dec2bin(dec, length = None):
+
+def dec2bin(dec, length=None):
     """convert decimal value to binary string"""
-    result = ''
+    result = ""
     if dec < 0:
         raise ValueError("Must be a positive integer")
     if dec == 0:
-        result = '0'
+        result = "0"
         if length != None:
-            result = result.rjust(length, '0')
+            result = result.rjust(length, "0")
         return result
     while dec > 0:
         result = str(dec % 2) + result
         dec = dec >> 1
     if length != None:
-        result = result.rjust(length, '0')
+        result = result.rjust(length, "0")
     return result
 
 
 class Knapsack:
-
     def __init__(self):
         self.items = []
         self.capacity = None
@@ -32,9 +32,9 @@ class Knapsack:
     def generate(self, N):
         # correlated prices
         for i in range(N):
-            w=random.uniform(1,10)
-            p=w+5
-            self.items.append((w,p))
+            w = random.uniform(1, 10)
+            p = w + 5
+            self.items.append((w, p))
 
         # calculate the capacity as a half of items weight sum
         self.capacity = 0
@@ -44,32 +44,32 @@ class Knapsack:
 
     def read(self, filename):
         # read data from the file
-        f=open(filename)
+        f = open(filename)
         while True:
             line = f.readline()
             if not line:
                 break
             line = line.strip()
-            if line.startswith('#'):
+            if line.startswith("#"):
                 continue
-            if line == '':
+            if line == "":
                 continue
             if self.capacity == None:
                 self.capacity = float(line)
                 continue
-            (w,p) = [float(x) for x in line.split()]
-            self.items.append((w,p))
+            (w, p) = [float(x) for x in line.split()]
+            self.items.append((w, p))
         f.close()
 
     def write(self, filename):
-        f = open(filename, 'w')
-        f.write('# capacity\n')
-        f.write('%f\n' % self.capacity)
-        f.write('\n')
+        f = open(filename, "w")
+        f.write("# capacity\n")
+        f.write("%f\n" % self.capacity)
+        f.write("\n")
 
-        f.write('# weight price\n')
+        f.write("# weight price\n")
         for i in range(len(self.items)):
-            f.write('%f %f\n' % (self.items[i][0],self.items[i][1]))
+            f.write("%f %f\n" % (self.items[i][0], self.items[i][1]))
         f.close()
 
     def eval(self, k):
@@ -80,39 +80,41 @@ class Knapsack:
         w = 0
         p = 0
         for i in range(len(k)):
-            if k[i] != '0':
+            if k[i] != "0":
                 w += self.items[i][0]
                 p += self.items[i][1]
-        return (w,p)
+        return (w, p)
 
     def analyse(self):
         N = len(self.items)
         # iterate over all the possibilite knapsacks of N elements
-        for i in range(2**N):
-            k = dec2bin(i,N)
+        for i in range(2 ** N):
+            k = dec2bin(i, N)
             e = self.eval(k)
-            print(k, end=' ')
-            print('  ', end=' ')
-            print(e, end=' ')
+            print(k, end=" ")
+            print("  ", end=" ")
+            print(e, end=" ")
             if e[0] > self.capacity:
-                print('-')
+                print("-")
             else:
                 print()
+
 
 class Evaluator:
     def __init__(self):
         self.knapsack = None
 
-    def __call__(self,chrom):
+    def __call__(self, chrom):
         if not self.knapsack:
             self.knapsack = Knapsack()
             self.knapsack.read(self.file)
             self.ro = None
             for i in self.knapsack.items:
-                if not self.ro or self.ro < i[1]/i[0]:
-                    self.ro = i[1]/i[0]
+                if not self.ro or self.ro < i[1] / i[0]:
+                    self.ro = i[1] / i[0]
         e = self.knapsack.eval(chrom)
         return e[1] - self.ro * (e[0] - self.knapsack.capacity)
+
 
 def usage():
     print(" -g | --generate          -- generate a random knapsack data")
@@ -120,13 +122,16 @@ def usage():
     print(" -f | --file <filename>   -- data filename")
     print(" -a | --analyse           -- perform an analysis on the knapsack")
 
-if __name__ == '__main__':
-    filename='/dev/stdout'
+
+if __name__ == "__main__":
+    filename = "/dev/stdout"
     generate = False
     analyse = False
 
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "gN:f:a", ['generate', "items=", 'file=', 'analyse'])
+        opts, args = getopt.getopt(
+            sys.argv[1:], "gN:f:a", ["generate", "items=", "file=", "analyse"]
+        )
     except getopt.GetoptError as err:
         print(str(err))
         usage()
@@ -161,6 +166,5 @@ if __name__ == '__main__':
     print(k.capacity)
     print(k.items)
     print(len(k.items))
-    print(k.eval('11'))
+    print(k.eval("11"))
     k.analyse()
-
