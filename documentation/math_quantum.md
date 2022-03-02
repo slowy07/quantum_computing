@@ -1,0 +1,7 @@
+# Mathematics and the Probabilistic Nature of Quantum Objects
+
+Because many of the concepts of quantum physics are difficult if not impossible for us to visualize, mathematics is essential to the field. Equations are used to describe or help predict quantum objects and phenomena in ways that are more exact than what our imaginations can conjure.
+
+Mathematics is also necessary to represent the probabilistic nature of quantum phenomena. For example, the position of an electron may not be known exactly. Instead, it may be described as being in a range of possible locations (such as within an orbital), with each location associated with a probability of finding the electron there.
+
+Given their probabilistic nature, quantum objects are often described using mathematical "wave functions," which are solutions to what is known as the Schrödinger equation. Waves in water can be characterized by the changing height of the water as the wave moves past a set point. Similarly, sound waves can be characterized by the changing compression or expansion of air molecules as they move past a point. Wave functions don't track with a physical property in this way. The solutions to the wave functions provide the likelihoods of where an observer might find a particular object over a range of potential options. However, just as a ripple in a pond or a note played on a trumpet are spread out and not confined to one location, quantum objects can also be in multiple places—and take on different states, as in the case of superposition—at once.
