@@ -1,10 +1,10 @@
-# quantum computing
+# Quantum computing
 
-this repo contains everything i learn about quantum computing and algorithm on quantum computing
+This repo contains everything i learn about quantum computing and algorithm on quantum computing
 
-## what is aquantum computing
+## What is aquantum computing
 
-quantum computing is an area of study focused on the development of computer based technologies centered around the principles of [quantum theory](documentation/quantum.md). quantum computing uses a combination of bits to perform specific computational taks. all at much higher efficiency than their classical counterparts. development of quantum computers mark a leap forward in computing capability, with massive performance gains for specifig use cases. for example quantum computing excels at like simulations.
+Quantum computing is an area of study focused on the development of computer based technologies centered around the principles of [quantum theory](documentation/quantum.md). quantum computing uses a combination of bits to perform specific computational taks. all at much higher efficiency than their classical counterparts. development of quantum computers mark a leap forward in computing capability, with massive performance gains for specifig use cases. for example quantum computing excels at like simulations.
 
 
 *More information*:
