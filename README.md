@@ -16,6 +16,7 @@ Quantum computing is an area of study focused on the development of computer bas
 
 *Perequisites*:
 - [basic python](documentation/python_jupyter.md)
+- quantum pyhsics 
 
 *Quantum machine Learning*:
 - [quantum k nearest neighbours](quantum_k_nearest_neighbour)
