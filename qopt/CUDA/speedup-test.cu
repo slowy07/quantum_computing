@@ -531,5 +531,22 @@ int main() {
 		float *h_fit;
 
 		h_best = (char*) calloc(chromlen * POPULATIONS, 1);
+		h_fit =  (float*) calloc(POPULATIONS, sizeof(float));
+
+		// allocate device memmory
+		char *d_best;
+		char *d_fit;
+
+		safeCall(cudaMalloc((void**)&d_best, chromlen * POPULATIONS));
+		safeCall(cudaMalloc((void**)&d_fit, POPULATIONS * POPULATIONS));
+		safeCall(cudaMalloc(&rngStates, POPULATIONS * chromlen * sizeof(curandState)));
+
+		cudaError_t err;
+
+		// copy from host memory
+		safeCall(cudaMemcpy(d_best, h_best, chromlen * POPULATIONS, cudaMemcpyHostToDevice));
+		safeCall(cudaMemcpy(d_fit, h_fit, sizeof(float) * POPULATIONS, cudaMemcpyHostToDevice));
 	}
+
+	return 0;
 }
