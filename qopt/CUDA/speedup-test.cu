@@ -522,7 +522,7 @@ int main() {
 		seed += dev;
 
 		safeCall(cudaSetDevice(dev));
-		safeCall(cudaGetDevice(&curdev));
+		safeCall(cudaGetDevice(&curdev));const
 		fprintf(stderr,"initializing device %d ... \n", curdev);
 		
 		int POPULATIONS = grid_width * grid_height;
@@ -546,6 +546,69 @@ int main() {
 		// copy from host memory
 		safeCall(cudaMemcpy(d_best, h_best, chromlen * POPULATIONS, cudaMemcpyHostToDevice));
 		safeCall(cudaMemcpy(d_fit, h_fit, sizeof(float) * POPULATIONS, cudaMemcpyHostToDevice));
+
+		int MAX_RUNS = 5;
+		float total_time = 0;
+		for (int run = 0; run < MAX_RUNS; run++) {
+			if (run == 0) {
+				seed = time(0) + start_tm.tv_usec + dev;
+				initRNG<<dim3(grid_with, grid_height), chromlen >> (seed, rngStates);
+				err = cudaGetLastError();
+				if (cudaSuccess != err) {
+					fprint(stderr, "(%d)->%s\n", curdev, cudaGetErrorString(err));
+				}
+				safeCall(cudaDeviceSynchronize());
+			}
+
+			gettimeofday(&start_tm, 0);
+
+			qiga<<<dim3(grid_width, grid_height), chromlen>>>(d_best, d_fit, rngStates);
+
+			err = cudaGetLastError();
+			if (cudaSuccess != err) {
+				fprint(stderr, "-> %d\n", cudaGetErrorString(err));
+			}
+			safeCall(cudaDeviceSynchronize());
+			fflush(stderr);
+
+			struct timeval stop_tm;
+			gettimeofday(&stop_tm, 0);
+			total_time += (1e6, * (stop_tm.tv_sec - start_tm.tv_sec) + (stop_tm.tv_usec - start_tm.tv_usec));
+			
+			float h_evalsperformed(GRID_WIDTH * GRID_HEIGHT);
+			safeCall(cudaMemcpyFromSymbol(h_evalsperformed, evalsperformed, sizeof(evalsperformed)));
+
+			safeCall(cudaMemcpy(h_best, d_best, chromlen * POPULATIONS, cudaMemcpyDeviceToHost));
+			safeCall(cudaMemcpy(h_fit, d_fit, sizeof(float) * POPULATIONS, cudaMemcpyDeviceToHost));
+
+			safeCall(cudaDeviceSynchronize());
+			float evals_avg = 0;
+
+			for (int r = 0; r < POPULATIONS; r++) {
+				evals_avg += h_evalsperformed[r];
+			}
+
+			evals_avg /= POPULATIONS;
+			float fit_avg = 0;
+			for (int r = 0; r < POPULATIONS; r++) {
+				fit_avg += h_fit[r];
+			}
+
+			fit_avg /= POPULATIONS;
+			printf("%f %f\n", evals_avg, fit_avg);
+
+			fflush(stdout);
+			fflush(stderr);
+
+		}
+		printf("avg run time: %g seconds]\n", total_time / MAX_RUNS);
+	
+		return 0;
+	}
+
+	for (int dev = 0; dev < GPU_DEVICES; dev++) {
+		int status;
+		wait(&status)
 	}
 
 	return 0;
