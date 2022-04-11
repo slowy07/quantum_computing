@@ -127,21 +127,21 @@ def preprocess(points):
     return points
 
 
-n = 100
-k = 4
-std = 2
-
-points, o_center = get_data(n, k, std)
-
-points = preprocess(points)
-plt.figure()
-draw_plot(points, o_center, label=False)
-
-centroids = initialize_centers(points, k)
-
-for i in range(5):
-    centers = find_nearest_neighbour(points, centroids)
+if __name__ == "__main__":
+    n = 100
+    k = 4
+    std = 2
+    
+    points, o_center = get_data(n, k, std)
+    points = preprocess(points)
     plt.figure()
-    draw_plot(points, centers)
+    draw_plot(points, o_center, label=False)
 
-    centroids = find_centroids(points, centers)
+    centroids = initialize_centers(points, k)
+    
+    for i in range(5):
+        centers = find_nearest_neighbour(points, centroids)
+        plt.figure()
+
+        centroids = find_centroids(point, centers)
+
