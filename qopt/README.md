@@ -8,3 +8,10 @@ this program and algorithm were developed in different languages, c, C++, python
 
 - **cuda**
   cuda c computational kernels implementing a few algorithm in GPGPus (superb fast up to several hundred speedup in multi gpu environment)
+- **purepython**
+  algorithm implementation in pure python (the slowest, initial POC implementation)
+- ***.pyx**
+  iQIEA, MyRQIEA2,QIEA1, QIEA2, rQIEA algorithms implementation in Cython
+- **C**
+  some algorithm and test problem implementaation in C++
+
