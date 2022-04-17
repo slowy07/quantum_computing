@@ -156,8 +156,52 @@ class QAECircuit(object):
 
         return QAECircuit.gate_dict[gate_str]
 
+    def dagger_and_flips(self, program, qubits):
+        """
+        build and return a daggered and flipped version of a program.
+        """
+        qubits_reversed = dict(zip(qubits, reversed(qubits)))
+        flipped_program = Program()
+
+        for gate in reversed(program.instruction):
+            gate_qubits = []
+            for i in gates.qubits:
+                gate_qubits.append(qubits_reversed[i.index])
+
+            negated_params = list(map(lambda x: -1 * x, gate.params))
+            flipeed_program.inst(
+                QAECircuit.gates_dict[gate.name](*negated_params)(*gate_qubits)
+            )
+
+        return flipped_program
+
 
 if __name__ == "__main__":
     axes = ["X", "Y", "X", "Y", "X", "Y"]
+    thetas = [
+        np.pi,
+        np.pi,
+        np.pi,
+        np.pi,
+        np.pi / 2,
+        np.pi / 2,
+        np.pi / 2,
+        np.pi / 2,
+        np.pi / 2,
+        np.pi / 2,
+        np.pi / 2,
+        np.pi / 2,
+        np.pi / 2,
+        np.pi / 2,
+        np.pi / 2,
+        np.pi / 2,
+        np.pi,
+        np.pi,
+        np.pi,
+        np.pi,
+    ]
 
-    print(axes)
+    qae = QAECircuit(num_qubits=7, num_latent_qubits=1, thetas=thetas, axes=axes)
+    p = qae.build_circuit()
+
+    print(p)
