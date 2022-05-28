@@ -17,13 +17,20 @@ Quantum computing is an area of study focused on the development of computer bas
 *Perequisites*:
 - [basic python](documentation/python_jupyter.md)
 - quantum pyhsics 
+- mathematic
+
+this require background in physics, mathematics, and computer science. thi includes knowledge of exponents, vectors, sine waves, linear algebra, probability and stochastic processes. to perform on data theoretical computation system i.e quantum computers make direct use of quantum-mechanical phenomena, such as superposition, entalgement. so one needs to understand the basic and advanced quantum mechanics to handle these operations. on the other hand, one needs to know quantum computer are based on transistor in the contrary to digital computers and the use the principle of superposition of states to encode the quantum bits instead of binary digits.
+
 
 *Quantum machine Learning*:
 - [quantum k nearest neighbours](quantum_k_nearest_neighbour)
+- [quantum ssupport vector machine](quantum_svm)
+- [quantum single layer precepton](quantum_single_layer_percepton)
 
 
 
 ## working with quantum
+
 to code any quantum circuit, step
 1. **build** design a quantum circuit that represent the problem considering
 2. **execute** run a circuits on a backedn, either a system or a simulator
